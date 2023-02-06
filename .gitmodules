@@ -1,0 +1,3 @@
+[submodule "high-fidelity-tilting-quadrotor"]
+	path = high-fidelity-tilting-quadrotor
+	url = https://github.com/sparcs-unipd/high-fidelity-tilting-quadrotor.git
