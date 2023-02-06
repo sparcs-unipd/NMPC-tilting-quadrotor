@@ -1,3 +1,6 @@
 [submodule "high-fidelity-tilting-quadrotor"]
 	path = high-fidelity-tilting-quadrotor
 	url = https://github.com/sparcs-unipd/high-fidelity-tilting-quadrotor.git
+[submodule "MATMPC"]
+	path = MATMPC
+	url = https://github.com/sparcs-unipd/MATMPC.git
