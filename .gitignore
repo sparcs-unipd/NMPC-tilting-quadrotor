@@ -30,3 +30,11 @@ codegen/
 
 # Octave session info
 octave-workspace
+
+# custom trajectories
+/custom_trajectories/
+# model parameters
+/modelParameters.mat
+# reference generator assist functions
+trjConstraint.m
+trjCost.m

@@ -56,8 +56,14 @@ opt.RTI             = 'yes';
 %'hpipm_pcond' (run mex_core/compile_hpipm.m first; set opt.condensing='no')
 
 %% reference
-load benchmark_trajectories/b04.mat
+%load benchmark_trajectories/b04.mat
+load custom_trajectories/reference.mat
 
+addFF = false; % options: true, false
+
+if( ~addFF )
+    reference(:,13:28) = 0;
+end
 time = tt';
 ref.time = time;
 ref.signals.dimensions = [ny, N];
@@ -75,6 +81,9 @@ q_des.signals.values = zeros([4, N+1, length(time)]);
 for k=1:length(time)-N-1
     q_des.signals.values(:,:,k) = des_q(:, k:k+N);
 end
+
+
+
 
  
 %% Initialization
@@ -94,7 +103,7 @@ u_MPC_0 = [
 z0 = zeros(nz,1);
 para0 = [1;0;0;0];  
 
-Qp = 50*[1 1 1];                 % position weight
+Qp = 5*[1 1 1];                 % position weight
 Qeq = [1 1 1];                        % quaternion weight
 Qv = 0.5*[1 1 1];               % linear speed weight
 Qomega = 10*[1 1 1];            % angular speed weight
@@ -167,3 +176,11 @@ if isempty(z)
     z0=0;
     z=0;
 end
+
+% add optional model uncertainties
+run addModelUncertainties.m
+
+tiltq.m_b = tiltq.m_b .* ( 1+modelRelativeUncertanties.mb );
+body.I = body.I .* ( 1+modelRelativeUncertanties.Ib );
+prop.k_m = prop.k_m .* ( 1+modelRelativeUncertanties.km );
+prop.k_t = prop.k_t .* ( 1+modelRelativeUncertanties.kt );

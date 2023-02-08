@@ -21,3 +21,11 @@ w_bar2_rest = tiltq.w_bar_hover_planar.^2;
 
 kh1 = 1;
 kh2 = 2;
+
+% add optional model uncertainties
+run addModelUncertainties.m
+
+tiltq.m_b = tiltq.m_b .* ( 1+modelRelativeUncertanties.mb );
+body.I = body.I .* ( 1+modelRelativeUncertanties.Ib );
+prop.k_m = prop.k_m .* ( 1+modelRelativeUncertanties.km );
+prop.k_t = prop.k_t .* ( 1+modelRelativeUncertanties.kt );
