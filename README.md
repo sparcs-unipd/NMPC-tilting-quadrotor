@@ -23,7 +23,7 @@ The default SQP solver is [`hpipm_sparse`](https://github.com/giaf/hpipm) which 
 
 ### Model generation
 
-The parameters (mass, inertia, thrust and torque coefficients, physical limits) of the tilting quadrotor and its default initial condition for the simulations for are stored in [highFidelityTiltingQuadrotorData.m](/highFidelityTiltingQuadrotorData.m). These paremeters must be provided to [Model_Generation.m](https://github.com/sparcs-unipd/MATMPC/blob/master/Model_Generation.m) to generate the `mex` function for the NMPC. To do so, run
+The parameters (mass, inertia, thrust and torque coefficients, physical limits) of the tilting quadrotor and its default initial condition for the simulations are stored in [highFidelityTiltingQuadrotorData.m](/highFidelityTiltingQuadrotorData.m). These paremeters must be provided to [Model_Generation.m](https://github.com/sparcs-unipd/MATMPC/blob/master/Model_Generation.m) to generate the `mex` function for the NMPC. To do so, run
 ```matlab
 Model_Generation('highFidelityTiltingQuadrotor','highFidelityTiltingQuadrotorData');
 ```
